@@ -27,15 +27,22 @@ app.get('/now', function(req, res, next) {
   next();
 }, function(req, res) {
   res.json({ time: req.now })
-  // console.log(`This is req.now ${res.json({ time: req.now })}`);
 });
 
 
+// 
+app.get('/:word/echo', function(req, res) {
+  console.log(req.params.word.toUpperCase());
+  var nvalue = req.params.word.toUpperCase();
+  res.json({ echo: nvalue });
+});
 
+
+//
 app.use(publicPath, express.static(__dirname + publicPath));
 
 
-
+//
 app.get("/json", function (req, res) {
     var response = { message: "Hello json" };
     console.log(response.message.toUpperCase());
